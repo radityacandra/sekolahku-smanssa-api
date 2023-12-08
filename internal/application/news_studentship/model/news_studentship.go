@@ -1,7 +1,7 @@
 package model
 
-type Headline struct {
-	ID      int    `gorm:"column:id"`
+type NewsStudentship struct {
+	ID      int    `gorm:"column:id_profilberitakesiswaan"`
 	Title   string `gorm:"column:judul"`
 	Content string `gorm:"column:isi"`
 	Author  string `gorm:"column:sumber"`
@@ -9,6 +9,6 @@ type Headline struct {
 	Date    string `gorm:"column:tgl"`
 }
 
-func (Headline) TableName() string {
-	return "v_headline"
+func (NewsStudentship) TableName() string {
+	return "t_profil_berita_kesiswaan"
 }

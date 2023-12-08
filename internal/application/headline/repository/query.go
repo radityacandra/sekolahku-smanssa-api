@@ -9,7 +9,7 @@ import (
 func (r *Repository) FindAll(c context.Context, page, pageSize int) []model.Headline {
 	var headlines []model.Headline
 
-	tx := r.DB.WithContext(c).Table("t_profil_berita")
+	tx := r.DB.WithContext(c).Model(&model.Headline{})
 
 	if pageSize > 0 {
 		tx.Limit(pageSize)
