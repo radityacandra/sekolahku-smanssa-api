@@ -3,6 +3,7 @@ package configs
 import (
 	"github.com/ilyakaznacheev/cleanenv"
 	"github.com/joho/godotenv"
+	"go.uber.org/zap"
 )
 
 type Config struct {
@@ -10,10 +11,10 @@ type Config struct {
 	ServerPort  string `env:"PORT" env-default:"8080"`
 }
 
-func LoadGlobalConfig() (*Config, error) {
+func LoadGlobalConfig(logger *zap.Logger) (*Config, error) {
 	var config Config
 	if err := godotenv.Load(); err != nil {
-		return nil, err
+		logger.Warn("no .env found, using default envvar...", zap.Error(err))
 	}
 
 	if err := cleanenv.ReadEnv(&config); err != nil {
