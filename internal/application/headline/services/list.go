@@ -7,7 +7,7 @@ import (
 )
 
 func (service *Service) List(c context.Context, req *dto.HeadlineListRequest) ([]dto.HeadlineListResponse, error) {
-	headlines := service.Repository.FindAll(c, 0, 5)
+	headlines := service.Repository.FindAll(c, req.Page, req.PageSize)
 
 	res := []dto.HeadlineListResponse{}
 	for _, headline := range headlines {

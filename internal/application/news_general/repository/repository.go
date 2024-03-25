@@ -9,6 +9,7 @@ import (
 
 type IRepository interface {
 	FindAll(c context.Context, page, pageSize int) []model.NewsGeneral
+	FindById(c context.Context, id int) *model.NewsGeneral
 }
 
 type Repository struct {

@@ -1,6 +1,7 @@
 package server
 
 import (
+	galleryHandler "github.com/radityacandra/sekolahku-smanssa-api/internal/application/gallery/handler"
 	headlineHandler "github.com/radityacandra/sekolahku-smanssa-api/internal/application/headline/handler"
 	newsCurriculumHandler "github.com/radityacandra/sekolahku-smanssa-api/internal/application/news_curriculum/handler"
 	newsGeneralHandler "github.com/radityacandra/sekolahku-smanssa-api/internal/application/news_general/handler"
@@ -20,20 +21,29 @@ func InitRoutes(deps *types.Dependency) {
 	// headline
 	headlineHandler := headlineHandler.NewHandler(deps)
 	v1.GET("/news/headline", headlineHandler.List)
+	v1.GET("/news/headline/:id", headlineHandler.Get)
 
 	// news curriculum
 	newsCurriculumHandler := newsCurriculumHandler.NewHandler(deps)
 	v1.GET("/news/curriculum", newsCurriculumHandler.List)
+	v1.GET("/news/curriculum/:id", newsCurriculumHandler.Get)
 
 	// news general
 	newsGeneralHandler := newsGeneralHandler.NewHandler(deps)
 	v1.GET("/news/general", newsGeneralHandler.List)
+	v1.GET("/news/general/:id", newsGeneralHandler.Get)
 
 	// news student council
 	newsStudentCouncilHandler := newsStudentCouncilHandler.NewHandler(deps)
 	v1.GET("/news/student-council", newsStudentCouncilHandler.List)
+	v1.GET("/news/student-council/:id", newsStudentCouncilHandler.Get)
 
 	// news studentship
 	newsStudentshipHandler := newsStudentshipHandler.NewHandler(deps)
 	v1.GET("/news/studentship", newsStudentshipHandler.List)
+	v1.GET("/news/studentship/:id", newsStudentshipHandler.Get)
+
+	// gallery
+	galleryHandler := galleryHandler.NewHandler(deps)
+	v1.GET("/gallery", galleryHandler.List)
 }

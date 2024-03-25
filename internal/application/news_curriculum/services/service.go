@@ -9,6 +9,7 @@ import (
 
 type IService interface {
 	List(c context.Context, req *dto.NewsCurriculumRequest) ([]dto.NewsCurriculumResponse, error)
+	Get(c context.Context, req *dto.DetailNewsRequest) (dto.DetailNewsResponse, error)
 }
 
 type Service struct {

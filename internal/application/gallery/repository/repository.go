@@ -3,13 +3,12 @@ package repository
 import (
 	"context"
 
-	"github.com/radityacandra/sekolahku-smanssa-api/internal/application/headline/model"
+	"github.com/radityacandra/sekolahku-smanssa-api/internal/application/gallery/model"
 	"gorm.io/gorm"
 )
 
 type IRepository interface {
-	FindAll(c context.Context, page, pageSize int) []model.Headline
-	FindById(c context.Context, id int) *model.Headline
+	FindAll(c context.Context, page, pageSize int) []model.Gallery
 }
 
 type Repository struct {

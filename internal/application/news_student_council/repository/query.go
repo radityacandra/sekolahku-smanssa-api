@@ -19,3 +19,13 @@ func (r *Repository) FindAll(c context.Context, page, pageSize int) []model.News
 
 	return news
 }
+
+func (r *Repository) FindById(c context.Context, id int) *model.NewsStudentCouncil {
+	var news model.NewsStudentCouncil
+
+	r.DB.WithContext(c).Model(&model.NewsStudentCouncil{}).
+		Where(&model.NewsStudentCouncil{ID: id}).
+		First(&news)
+
+	return &news
+}

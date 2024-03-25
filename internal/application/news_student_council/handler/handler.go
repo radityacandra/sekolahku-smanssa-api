@@ -41,3 +41,20 @@ func (h *Handler) List(c echo.Context) error {
 
 	return c.JSON(http.StatusOK, responsewrapper.Wrapper(res, err, 200))
 }
+
+func (h *Handler) Get(c echo.Context) error {
+	var req dto.DetailNewsRequest
+
+	if err := c.Bind(&req); err != nil {
+		return c.JSON(http.StatusUnprocessableEntity, responsewrapper.WrapperError(err, 422))
+	}
+
+	validate := validator.New(validator.WithRequiredStructEnabled())
+	if err := validate.Struct(req); err != nil {
+		return c.JSON(http.StatusBadRequest, responsewrapper.WrapperError(err, 400))
+	}
+
+	res, err := h.Service.Get(c.Request().Context(), &req)
+
+	return c.JSON(http.StatusOK, responsewrapper.Wrapper(res, err, 200))
+}
