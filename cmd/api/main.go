@@ -22,6 +22,7 @@ func main() {
 		panic(fmt.Errorf("cannot load default config with error: %s", err))
 	}
 
+	logger.Info("NR Lisence Key", zap.String("Key", config.NewRelicLisenceKey))
 	app, err := newrelic.NewApplication(
 		newrelic.ConfigAppName("Sekolahku Smanssa API"),
 		newrelic.ConfigLicense(config.NewRelicLisenceKey),
