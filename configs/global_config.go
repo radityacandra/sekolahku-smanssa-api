@@ -7,8 +7,9 @@ import (
 )
 
 type Config struct {
-	PostgresUri string `env:"POSTGRES_URI"`
-	ServerPort  string `env:"PORT" env-default:"8080"`
+	PostgresUri        string `env:"POSTGRES_URI"`
+	ServerPort         string `env:"PORT" env-default:"8080"`
+	NewRelicLisenceKey string `env:"NR_LISENCE_KEY"`
 }
 
 func LoadGlobalConfig(logger *zap.Logger) (*Config, error) {
