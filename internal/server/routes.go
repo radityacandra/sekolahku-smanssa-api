@@ -7,6 +7,7 @@ import (
 	newsGeneralHandler "github.com/radityacandra/sekolahku-smanssa-api/internal/application/news_general/handler"
 	newsStudentCouncilHandler "github.com/radityacandra/sekolahku-smanssa-api/internal/application/news_student_council/handler"
 	newsStudentshipHandler "github.com/radityacandra/sekolahku-smanssa-api/internal/application/news_studentship/handler"
+	organizationalStructureHandler "github.com/radityacandra/sekolahku-smanssa-api/internal/application/organizational_structure/handler"
 	"github.com/radityacandra/sekolahku-smanssa-api/internal/application/user/handler"
 	"github.com/radityacandra/sekolahku-smanssa-api/internal/server/types"
 )
@@ -46,4 +47,8 @@ func InitRoutes(deps *types.Dependency) {
 	// gallery
 	galleryHandler := galleryHandler.NewHandler(deps)
 	v1.GET("/gallery", galleryHandler.List)
+
+	// organizational structure
+	organizationalStructure := organizationalStructureHandler.NewHandler(deps)
+	v1.GET("/organizational_structure", organizationalStructure.List)
 }
