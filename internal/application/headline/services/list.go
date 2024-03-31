@@ -12,10 +12,11 @@ func (service *Service) List(c context.Context, req *dto.HeadlineListRequest) ([
 	res := []dto.HeadlineListResponse{}
 	for _, headline := range headlines {
 		res = append(res, dto.HeadlineListResponse{
-			ID:      headline.ID,
-			Title:   headline.Title,
-			Content: headline.Content,
-			Image:   headline.Image,
+			ID:          headline.ID,
+			Title:       headline.Title,
+			Content:     headline.Content,
+			Image:       headline.Image,
+			PublishedAt: headline.Date,
 		})
 	}
 
